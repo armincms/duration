@@ -15,12 +15,8 @@ class Duration extends Model
      * @var array
      */
     protected $casts = [
-        'interval' => 'string',
-        'length'   => 'integer',
-    ]; 
-
-    public function translator()
-    {
-        return 'sequential';
-    }
+        'label'     => 'json',
+        'interval'  => 'string',
+        'length'    => 'integer',
+    ];  
 }

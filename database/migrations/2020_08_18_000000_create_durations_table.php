@@ -16,11 +16,9 @@ class CreateDurationsTable extends Migration
     {
         Schema::create('durations', function (Blueprint $table) {
             $table->bigIncrements('id');    
-            $table->string('label')->nullable(); 
-            $table->string('locale')->default(app()->getLocale()); 
+            $table->json('label')->nullable();  
             $table->integer('length')->default(1); 
-            $table->enum('interval', array_keys(Duration::intervals()))->default('day'); 
-            $table->string('sequence_key')->nullable();  
+            $table->enum('interval', array_keys(Duration::intervals()))->default('day');   
             $table->timestamps();    
             $table->softDeletes(); 
         });

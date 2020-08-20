@@ -41,7 +41,8 @@ abstract class Duration extends Resource
     public function fields(Request $request)
     { 
     	return [
-    		ID::make(),
+    		ID::make()
+                ->sortable(),
 
     		Select::make(__('Interval'), 'interval')
     			->options(static::intervals())
@@ -55,7 +56,7 @@ abstract class Duration extends Resource
     			->min(1)
     			->rules(['required', 'min:1']),
 
-    		new Targomaan([
+    		Targomaan::make([
     			Text::make(__('Label'), 'label')
     				->required()
     				->rules('required'),
