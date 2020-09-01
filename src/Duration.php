@@ -19,4 +19,21 @@ class Duration extends Model
         'interval'  => 'string',
         'length'    => 'integer',
     ];  
+
+    public function days()
+    {
+        return $this->length * $this->getIntervalAsDays();
+    }
+
+    public function getIntervalAsDays()
+    {
+        return $this->getIntervalRelevantDays($this->interval);
+    }
+
+    protected function getIntervalRelevantDays(string $interval)
+    {
+        $now  = now();  
+
+        return $now->diffInDays($now->copy()->modify("1 {$interval}"), false); 
+    } 
 }
