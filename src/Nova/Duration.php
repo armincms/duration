@@ -75,7 +75,7 @@ class Duration extends Resource
      */
     public function title()
     {
-        return (string) data_get($this, 'label.'.app()->getLocale());
+        return $this->resource->title();
     }
 
     /**

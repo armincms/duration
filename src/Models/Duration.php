@@ -48,4 +48,14 @@ class Duration extends Model
     {
         return with(now(), fn ($now) => $now->diffInDays($now->copy()->modify("1 {$interval}"), false));
     }
+
+    /**
+     * Get the value that should be displayed to represent the model.
+     *
+     * @return string
+     */
+    public function title(): string
+    {
+        return (string) data_get($this, 'label.'.app()->getLocale()) ?? array_shift((array) $this->name);
+    }
 }
